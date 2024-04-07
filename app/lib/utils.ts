@@ -12,12 +12,14 @@ export const formatDateToLocal = (
   dateStr: string,
   locale: string = 'en-US',
 ) => {
+  console.log(dateStr+"paila?")
   const date = new Date(dateStr);
   const options: Intl.DateTimeFormatOptions = {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
   };
+  console.log(date)
   const formatter = new Intl.DateTimeFormat(locale, options);
   return formatter.format(date);
 };

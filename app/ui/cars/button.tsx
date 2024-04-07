@@ -21,7 +21,7 @@ export function CreateTicket() {
 
 export function IconVehicle({ VehicleType }: { VehicleType: String }) {
 
-    const urlIcon = `/icons/${VehicleType}.png`
+    const urlIcon = `/icons/${VehicleType.toUpperCase()}.png`
 
     return (
         <div className="p-2 m-1 bg-gray-200 rounded-full">
