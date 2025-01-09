@@ -30,6 +30,17 @@ export type TicketTable = {
   plate: string
 };
 
+export type CreateTicketForm = {
+  parkingcustomerid: string,
+  name: string,
+  phone: string,
+  email: string,
+  arrivaldate: string,
+  origin: string,
+  type:  'Car' | 'Moto' | 'Bike'| 'Truck',
+  plate: string
+};
+
 
 
 export type InvoicesTable = {

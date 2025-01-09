@@ -124,8 +124,47 @@ import {
   return parkingTickets;
 } */
 
+export default function VehicleType(){
+  return ['Car' , 'Moto' , 'Bike', 'Truck']
+}
 
 export async function fetchParkingTickets() {
+
+
+  // Add noStore() here to prevent the response from being cached.
+  // This is equivalent to in fetch(..., {cache: 'no-store'}).
+
+  try {
+    // Artificially delay a response for demo purposes.
+    // Don't do this in production :)
+
+    console.log('Fetching tickets data...');
+
+
+    const data = await sql<TicketTable>`SELECT parkingtickets.id,parkingcustomers.name, 
+    parkingcustomers.phone,parkingcustomers.email, parkingtickets.arrivaldate,
+    parkingtickets.leavingdate,parkingtickets.price,parkingtickets.origin,
+    parkingtickets.type,parkingtickets.plate
+
+    FROM parkingtickets
+    
+    INNER JOIN parkingcustomers
+    
+    ON parkingcustomers.id = parkingtickets.parkingcustomerid
+    `;
+
+   // console.log(data.rows);
+
+    return data.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch parking tickets data.');
+  }
+
+
+};
+
+export async function saveParkingTickets() {
 
 
   // Add noStore() here to prevent the response from being cached.
